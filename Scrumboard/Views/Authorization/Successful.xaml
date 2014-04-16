@@ -1,0 +1,37 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Scrumboard.Views.Authorization.Successful"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" Style="{StaticResource TransitionPageStyle}">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="#FF3A707C">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,10,0" Height="126" VerticalAlignment="Top" Grid.RowSpan="2">
+            <TextBlock Text="Scrumboard" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" Margin="0" FontSize="21.333"/>
+            <TextBlock Text="Authorization" Margin="0,5,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1">
+        	<TextBlock TextAlignment="Center" x:Name="Status_Title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Thank you!" VerticalAlignment="Top" Margin="10,256,0,0" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="48" Width="460"/>
+        	<TextBlock TextAlignment="Center" x:Name="Status_Body" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Application is authorized" VerticalAlignment="Top" Margin="10,357,0,0" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="29.333" Width="460"/>
+        	<Button x:Name="Go_To_Main" Content="Go to main screen" HorizontalAlignment="Left" Margin="122,484,0,0" VerticalAlignment="Top" Tap="Go_To_Main_Tap"/>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

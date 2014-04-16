@@ -1,0 +1,19 @@
+﻿<xapCache source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Bin\Debug\Scrumboard_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="16/04/2014 21:46:49">
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\obj\Debug\Scrumboard.dll" archivePath="Scrumboard.dll" lastWriteTime="16/04/2014 21:46:47" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="31/07/2013 06:15:08" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="31/07/2013 06:15:08" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="31/07/2013 06:15:08" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="31/07/2013 06:15:08" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="31/07/2013 06:15:08" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\README_FIRST.txt" archivePath="README_FIRST.txt" lastWriteTime="14/04/2014 22:17:13" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Toolkit.Content\ApplicationBar.Add.png" archivePath="Toolkit.Content\ApplicationBar.Add.png" lastWriteTime="14/04/2014 22:17:13" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Toolkit.Content\ApplicationBar.Cancel.png" archivePath="Toolkit.Content\ApplicationBar.Cancel.png" lastWriteTime="14/04/2014 22:17:13" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Toolkit.Content\ApplicationBar.Check.png" archivePath="Toolkit.Content\ApplicationBar.Check.png" lastWriteTime="14/04/2014 22:17:13" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Toolkit.Content\ApplicationBar.Delete.png" archivePath="Toolkit.Content\ApplicationBar.Delete.png" lastWriteTime="14/04/2014 22:17:13" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Toolkit.Content\ApplicationBar.Select.png" archivePath="Toolkit.Content\ApplicationBar.Select.png" lastWriteTime="14/04/2014 22:17:13" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="16/04/2014 01:10:31" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="31/07/2013 06:15:08" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="31/07/2013 06:15:08" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="14/04/2014 22:17:07" />
+  <file source="G:\WindowsPhoneApps\Scrumboard\Scrumboard\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="16/04/2014 01:10:31" />
+</xapCache>
