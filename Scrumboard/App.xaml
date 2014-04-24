@@ -4,12 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:Primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone">
 
     <!--Application Resources-->
     <Application.Resources>
         <Style x:Key="TransitionPageStyle" TargetType="phone:PhoneApplicationPage">
-            <Setter Property="toolkit:TransitionService.NavigationInTransition">
+            <!--<Setter Property="toolkit:TransitionService.NavigationInTransition">
                 <Setter.Value>
                     <toolkit:NavigationInTransition>
                         <toolkit:NavigationInTransition.Backward>
@@ -20,8 +21,8 @@
                         </toolkit:NavigationInTransition.Forward>
                     </toolkit:NavigationInTransition>
                 </Setter.Value>
-            </Setter>
-            <Setter Property="toolkit:TransitionService.NavigationOutTransition">
+            </Setter>-->
+            <!--<Setter Property="toolkit:TransitionService.NavigationOutTransition">
                 <Setter.Value>
                     <toolkit:NavigationOutTransition>
                         <toolkit:NavigationOutTransition.Backward>
@@ -31,6 +32,60 @@
                             <toolkit:SlideTransition Mode="SlideLeftFadeOut"/>
                         </toolkit:NavigationOutTransition.Forward>
                     </toolkit:NavigationOutTransition>
+                </Setter.Value>
+            </Setter>-->
+        </Style>
+        <Style x:Key="PivotHeaderItemStyle" TargetType="Primitives:PivotHeaderItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="21,0,1,0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Primitives:PivotHeaderItem">
+                        <Grid Background="#FF324459">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentControl x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Opacity="{StaticResource PhonePivotUnselectedItemOpacity}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="72"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="phone:Pivot">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <Grid/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="phone:Pivot">
+                        <Grid HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Background="{TemplateBinding Background}" Grid.RowSpan="3"/>
+                            <ContentControl ContentTemplate="{TemplateBinding TitleTemplate}" Content="{TemplateBinding Title}" HorizontalAlignment="Left" Margin="12,17,0,-7" Style="{StaticResource PivotTitleStyle}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="21.333"/>
+                            <Primitives:PivotHeadersControl x:Name="HeadersListElement" Grid.Row="1" ItemContainerStyle="{StaticResource PivotHeaderItemStyle}" Margin="-10,8,0,0"/>
+                            <ItemsPresenter x:Name="PivotItemPresenter" Margin="{TemplateBinding Padding}" Grid.Row="2"/>
+                        </Grid>
+                    </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>

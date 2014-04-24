@@ -94,7 +94,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Integration\Customization\Control\TileGrid.cs" />
+    <Compile Include="Integration\Customization\Control\TileTextBlock.cs" />
+    <Compile Include="Integration\Enums\NotificationEnum.cs" />
+    <Compile Include="Integration\Mapper\EnumMapper.cs" />
+    <Compile Include="Models\BoardType.cs" />
+    <Compile Include="Integration\Enums\ConnectionEnum.cs" />
+    <Compile Include="Integration\Utils\EnumUtil.cs" />
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Models\CardType.cs" />
+    <Compile Include="Models\MemberType.cs" />
+    <Compile Include="Models\NotificationType.cs" />
     <Compile Include="SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
@@ -104,6 +114,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\BoardViewModel.cs" />
+    <Compile Include="ViewModels\CardViewModel.cs" />
+    <Compile Include="ViewModels\NotificationViewModel.cs" />
     <Compile Include="Views\Authorization\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
@@ -112,6 +125,9 @@
     </Compile>
     <Compile Include="Views\Authorization\Successful.xaml.cs">
       <DependentUpon>Successful.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -135,8 +151,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Main\StartPage.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\Mappings\NotificationMappings.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -169,6 +192,9 @@
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+    <Resource Include="Assets\Img\white_icon_clock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -177,18 +203,42 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <BlendEmbeddedFont Include="Fonts\ARIALN.TTF">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\ARIALNB.TTF">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\ARIALNBI.TTF">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\ARIALNI.TTF">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
     <BlendEmbeddedFont Include="Fonts\BuxtonSketch.ttf">
       <IsSystemFont>True</IsSystemFont>
       <All>True</All>
       <AutoFill>True</AutoFill>
     </BlendEmbeddedFont>
-    <Resource Include="white_icon_cog.png" />
+    <Resource Include="Assets\Img\white_icon_cog.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Scrumboard.Resources;
+using System.IO.IsolatedStorage;
 
 namespace Scrumboard
 {
@@ -23,9 +24,10 @@ namespace Scrumboard
 
         public void SplashScreenComplete(object sender, EventArgs args)
         {
-            //if Authenticated application ---> move to main page or pivot with my page etc
-            // else move to authentication
-            NavigationService.Navigate(new Uri("/Views/Authorization/Authorization.xaml", UriKind.Relative));
+           if( IsolatedStorageSettings.ApplicationSettings.Contains("Token"))
+               NavigationService.Navigate(new Uri("/Views/Main/StartPage.xaml", UriKind.Relative));
+            else
+               NavigationService.Navigate(new Uri("/Views/Authorization/Authorization.xaml", UriKind.Relative));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

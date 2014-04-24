@@ -52,6 +52,7 @@ namespace Scrumboard
         {
             if (e.Error == null)
             {
+                IsolatedStorageSettings.ApplicationSettings["MyToken"] = "cdbaafab040e4588feb88455f3a792f8";
                 IsolatedStorageSettings.ApplicationSettings["Token"] = Token.Text;
                 IsolatedStorageSettings.ApplicationSettings.Save();
                 NavigationService.Navigate(new Uri("/Views/Authorization/Successful.xaml", UriKind.Relative));

@@ -15,21 +15,21 @@
     shell:SystemTray.IsVisible="True" Style="{StaticResource TransitionPageStyle}">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="#FF3A707C" toolkit:SlideInEffect.LineIndex="1">
+    <Grid x:Name="LayoutRoot" toolkit:SlideInEffect.LineIndex="1" Background="#FF324459">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,10,623" Grid.RowSpan="2">
-            <TextBlock x:Name="Application_Title" Text="Scrumboard" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="21.333" Margin="0,0,10,0"/>
-            <TextBlock x:Name="Page_Title" Text="Authorization" Margin="0,5,10,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch"/>
+        <StackPanel Grid.Row="0" Margin="0,0,0,623" Grid.RowSpan="2" Background="#FF324459">
+            <TextBlock x:Name="Application_Title" Text="Scrumboard" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="21.333" Margin="12,17,10,0"/>
+            <TextBlock x:Name="Page_Title" Text="Authorization" Margin="12,0,10,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1">
-        	<TextBlock TextAlignment="Center" x:Name="Authorize_Message" HorizontalAlignment="Left" Margin="10,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="460" Height="272" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="21.333">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Background="#FF324459" Margin="0,150,0,0">
+        	<TextBlock TextAlignment="Center" x:Name="Authorize_Message" HorizontalAlignment="Left" Margin="10,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="460" Height="272" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="21.333">
         		<Run Text="Before you can use scrumboard application you have to follow procedure below:"/>
         		<LineBreak/>
         		<Run Text="1. Create trello account (skip if you already have one )"/>
@@ -44,10 +44,10 @@
         		<LineBreak/>
         		<Run Text="After following above steps you are ready to go!"/>
         	</TextBlock>
-        	<HyperlinkButton  x:Name="Authorize_Button" Content="Authorize Me!" HorizontalAlignment="Left" Margin="149,523,0,0" VerticalAlignment="Top" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="32" Tap="Authorize_Button_Tap"/>
-        	<HyperlinkButton  x:Name="Authorize_again_Button" Content="Authorize me again!" HorizontalAlignment="Left" Margin="111,523,0,0" VerticalAlignment="Top" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="32" Tap="Authorize_Button_Tap" Visibility="Collapsed"/>
-        	<TextBox x:Name="Token" HorizontalAlignment="Left" Height="72" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" Margin="0,610,0,0" Background="White" BorderBrush="#F2FFFFFF" SelectionBackground="#FF0BDC4E" Visibility="Collapsed"/>
-        	<Button x:Name="Save" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="330,610,0,0" Width="150" Visibility="Collapsed" Tap="Save_Tap"/>
+        	<HyperlinkButton  x:Name="Authorize_Button" Content="Authorize Me!" HorizontalAlignment="Left" Margin="149,406,0,0" VerticalAlignment="Top" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="32" Tap="Authorize_Button_Tap"/>
+        	<HyperlinkButton  x:Name="Authorize_again_Button" Content="Authorize me again!" HorizontalAlignment="Left" Margin="111,406,0,0" VerticalAlignment="Top" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="32" Tap="Authorize_Button_Tap" Visibility="Collapsed"/>
+        	<TextBox x:Name="Token" HorizontalAlignment="Left" Height="72" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" Margin="0,493,0,0" Background="White" BorderBrush="#F2FFFFFF" SelectionBackground="#FF0BDC4E" Visibility="Collapsed"/>
+        	<Button x:Name="Save" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="330,493,0,0" Width="150" Visibility="Collapsed" Tap="Save_Tap"/>
         </Grid>
     </Grid>
 

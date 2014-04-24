@@ -14,7 +14,8 @@
     shell:SystemTray.IsVisible="True" Style="{StaticResource TransitionPageStyle}">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="#FF3A707C">
+    <Grid x:Name="LayoutRoot" Background="#FF324459">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -23,14 +24,14 @@
         <!--TitlePanel contains the name of the application and page title-->
 
         <!--ContentPanel - place additional content here-->
-        <StackPanel Grid.Row="0" Margin="12,17,10,0" Height="126" VerticalAlignment="Top">
-        	<TextBlock Text="Scrumboard" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" Margin="0" FontSize="21.333"/>
-        	<TextBlock Text="Authorization" Margin="0,5,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch"/>
+        <StackPanel Grid.Row="0" Height="143" VerticalAlignment="Top" Background="#FF324459">
+        	<TextBlock Text="Scrumboard" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" Margin="12,17,0,0" FontSize="21.333"/>
+        	<TextBlock Text="Authorization" Margin="12,5,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch"/>
         </StackPanel>
-        <Grid x:Name="ContentPanel_Copy" Grid.RowSpan="2">
-        	<TextBlock TextAlignment="Center" x:Name="Status_Title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Something is wrong" VerticalAlignment="Top" Margin="10,256,0,0" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="48" Width="460"/>
-        	<TextBlock TextAlignment="Center" x:Name="Status_Body" HorizontalAlignment="Left" TextWrapping="Wrap" Text="The key you provided is incorrect, authorize your application again" VerticalAlignment="Top" Margin="10,357,0,0" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="29.333" Width="460"/>
-        	<Button x:Name="Go_Back_Authorization" Content="Go to authorization" HorizontalAlignment="Left" Margin="114,528,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.502,0.514" Tap="Go_Back_Authorization_Tap"/>
+        <Grid x:Name="ContentPanel_Copy" Grid.Row="1" Background="#FF324459">
+        	<TextBlock TextAlignment="Center" x:Name="Status_Title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Something is wrong" VerticalAlignment="Top" Margin="10,125,0,0" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="48" Width="460"/>
+        	<TextBlock TextAlignment="Center" x:Name="Status_Body" HorizontalAlignment="Left" TextWrapping="Wrap" Text="The key you provided is incorrect, authorize your application again" VerticalAlignment="Top" Margin="10,226,0,0" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="29.333" Width="460"/>
+        	<Button x:Name="Go_Back_Authorization" Content="Go to authorization" HorizontalAlignment="Left" Margin="114,397,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.502,0.514" Tap="Go_Back_Authorization_Tap"/>
         </Grid>
     </Grid>
 

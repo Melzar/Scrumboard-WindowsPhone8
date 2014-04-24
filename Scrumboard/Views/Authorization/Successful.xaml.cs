@@ -19,7 +19,7 @@ namespace Scrumboard.Views.Authorization
 
         private void Go_To_Main_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-        	NavigationService.Navigate(new Uri("/Views/Main/Main.xaml", UriKind.Relative));
+        	NavigationService.Navigate(new Uri("/Views/Main/StartPage.xaml", UriKind.Relative));
         }
     }
 }
