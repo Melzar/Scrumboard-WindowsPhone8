@@ -25,20 +25,29 @@ namespace Scrumboard.ViewModels
             CardCollection = new ObservableCollection<CardType>();
             isLoading = false;
         }
+       
+        public void LoadAllMyCardsPage()
+        {
+            isLoading = true;
+            WebClient notificationclient = new WebClient();
+            notificationclient.OpenReadCompleted += RenderCards;
+            notificationclient.OpenReadAsync(new Uri(String.Format(EnumUtil.GetEnumDescription(ConnectionEnum.GETConnections.MyCards), IsolatedStorageSettings.ApplicationSettings["MyToken"], IsolatedStorageSettings.ApplicationSettings["Token"])));
+        }
 
         public void LoadMyCardsPage()
         {
             isLoading = true;
             WebClient cards = new WebClient();
-            cards.OpenReadCompleted += new OpenReadCompletedEventHandler(RenderMyCards);
-            cards.OpenWriteAsync(new Uri(string.Format(EnumUtil.GetEnumDescription(ConnectionEnum.GETConnections.MyCards), IsolatedStorageSettings.ApplicationSettings["MyToken"], IsolatedStorageSettings.ApplicationSettings["Token"])));
+            cards.OpenReadCompleted += RenderCards;
+            cards.OpenReadAsync(new Uri(string.Format(EnumUtil.GetEnumDescription(ConnectionEnum.GETConnections.MyCardsWithLimit), IsolatedStorageSettings.ApplicationSettings["MyToken"], IsolatedStorageSettings.ApplicationSettings["Token"], 4)));
         }
 
-        public void RenderMyCards(object sender, OpenReadCompletedEventArgs e)
+        private void RenderCards(object sender, OpenReadCompletedEventArgs e)
         {
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CardType));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CardType[]));
             CardType[] cards = serializer.ReadObject(e.Result) as CardType[];
-            cards.Take(4).ToList().ForEach(CardCollection.Add);
+            CardCollection.Clear();
+            cards.ToList().ForEach(CardCollection.Add);
             isLoading = false;
         }
 

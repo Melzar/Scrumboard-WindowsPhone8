@@ -21,12 +21,14 @@ namespace Scrumboard
 
         BoardViewModel boardview;
         NotificationViewModel notificationview;
+        CardViewModel cardview;
 
         public StartPage()
         {
             InitializeComponent();
             boardview = (BoardViewModel)Resources["boardView"];
             notificationview = (NotificationViewModel)Resources["notificationView"];
+            cardview = (CardViewModel)Resources["cardView"];
             board_list.ItemRealized += board_list_ItemRealized;
         }
 
@@ -34,11 +36,29 @@ namespace Scrumboard
         {
             boardview.LoadMyBoardsPage();
             notificationview.LoadMyNotificationsPage();
+            cardview.LoadMyCardsPage();
         }
 
         void board_list_ItemRealized(object sender, ItemRealizationEventArgs e)
         {
             //boardview.LoadPage();
+        }
+
+        private void AllBoards_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            PhoneApplicationService.Current.State["Active"] = 0;
+            NavigationService.Navigate(new Uri("/Views/All/AllPages.xaml", UriKind.Relative));
+        }
+
+        private void AllNotifications_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            PhoneApplicationService.Current.State["Active"] = 1;
+            NavigationService.Navigate(new Uri("/Views/All/AllPages.xaml", UriKind.Relative));
+        }
+        private void AllCards_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            PhoneApplicationService.Current.State["Active"] = 2;
+            NavigationService.Navigate(new Uri("/Views/All/AllPages.xaml", UriKind.Relative));
         }
      
     }

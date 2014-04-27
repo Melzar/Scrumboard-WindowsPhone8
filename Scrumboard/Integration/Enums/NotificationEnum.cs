@@ -19,8 +19,10 @@ namespace Scrumboard.Integration.Enums
             [Description("{0} added checklist {1} to card {2}")]
             addChecklistToCard = 1,
             //Member Creator Full Name added **Member Full Name** to board [board Name](https://trello.com/c/cidcidcidcidcidcidcidcid)
-            [Description("{0} added {1} to board {2}")]
+            [Description("{0} added new user to board {1}")]
             addMemberToBoard = 2,
+            [Description("{0} added user {1} to board {2}")]
+            addMemberToBoardFull,
             //Member Creator Full Name added **Member Full Name** to card [Card Name](https://trello.com/c/cidcidcidcidcidcidcidcid)
             [Description("{0} added {1} to card {2}")]
             addMemberToCard = 3,
@@ -39,7 +41,7 @@ namespace Scrumboard.Integration.Enums
             //Member Creator Full Name converted checklist item from **Card Source Name** to card [Card Name](https://trello.com/c/cidcidcidcidcidcidcidcid)
             [Description("{0} converted checklist item from {1} to card {2}")]
             convertToCardFromCheckItem = 8,
-            //Member Creator Full Name copied board **Card Source Name** to [Board Name](https://trello.com/c/cidcidcidcidcidcidcidcid)
+            //Member Creator Full Name copied board **Board Source Name** to [Board Name](https://trello.com/c/cidcidcidcidcidcidcidcid)
             [Description("{0} copied board {1} to {2}")]
             copyBoard = 9,
             //Member Creator Full Name created board [Board One](https://trello.com/board/b1idb1idb1idb1idb1idb1id)
@@ -83,7 +85,7 @@ namespace Scrumboard.Integration.Enums
             [Description("{0} made {1} an normal member of organization {2}")]
             makeNormalMemberOfOrganization = 24,
             //Member Creator Full Name made **Member Full Name** an observer of organization [Board One](https://trello.com/board/b1idb1idb1idb1idb1idb1id)
-            [Description("{0} made {1} an observer of organization {2}")]
+            [Description("{0} made {1} an observer of board {2}")]
             makeObserverOfBoard = 25,
             //Member Creator Full Name Joined Trello
             [Description("{0} Joined Trello")]
@@ -92,13 +94,13 @@ namespace Scrumboard.Integration.Enums
             [Description("{0} moved card {1} from {2} to {3}")]
             moveCardFromBoard = 27,
             //Member Creator Full Name moved list **List Name** from **Board One** to **Board Target Name**
-            [Description("{0} moved list {1} from {3} to {4}")]
+            [Description("{0} moved list {1} from {2} to {3}")]
             moveListFromBoard = 28,
             //Member Creator Full Name moved card **Card Name** from list **List One** to **List Target Name**
-            [Description("{0} moved card {1} from list {3} to list {4}")]
+            [Description("{0} moved card {1} from board {2} to board {3}")]
             moveCardToBoard = 29,
             //Member Creator Full Name moved list **Card Name** from board **Board One** to **Board Target Name**
-            [Description("{0} moved list {1} from board {3} to board {4}")]
+            [Description("{0} moved list {1} from board {2} to board {3}")]
             moveListToBoard = 30,
 
             //Member Creator Full Name removed admin **Admin Name** from board [Board Name](https://trello.com/c/cidcidcidcidcidcidcidcid)
@@ -120,16 +122,20 @@ namespace Scrumboard.Integration.Enums
             //Member Creator Full Name invited (unconfirmed) **Member Creator Full Name** to organization [Organization One](https://trello.com/board/b1idb1idb1idb1idb1idb1id)
             [Description("{0} invited (unconfirmed) {1} to organization {2}")]
             unconfirmedOrganizationInvitation = 37,
-
+            [Description("{0} updated board {1}")]
             updateBoard = 38,
+            [Description("{0} updated card {1}")]
             updateCard = 39,
             //Member Creator Full Name checked **Check Item Name** on card [Card Name](https://trello.com/c/cidcidcidcidcidcidcidcid)
             [Description("{0} checked {1} on card {2}")]
             updateCheckItemStateOnCard = 40,
-
+            [Description("{0} updated checklist {1}")]
             updateChecklist = 41,
+            [Description("{0} updated list {1}")]
             updateList = 42,
+            [Description("{0} updated member {1}")]
             updateMember = 43,
+            [Description("{0} updated organization {1}")]
             updateOrganization = 44,
             //Member Creator Full Name moved card [Card Name](https://trello.com/c/cidcidcidcidcidcidcidcid) from **List Before Name** to **List After Name**
             [Description("{0} moved card {1} from {2} to {3}")]

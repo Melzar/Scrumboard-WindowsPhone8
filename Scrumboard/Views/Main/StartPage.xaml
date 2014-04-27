@@ -9,7 +9,7 @@
     xmlns:Primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
     x:Class="Scrumboard.StartPage"
     mc:Ignorable="d"
-    SupportedOrientations="Portrait"  Orientation="Portrait"
+    SupportedOrientations="PortraitOrLandscape"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
     <phone:PhoneApplicationPage.Resources>
@@ -40,17 +40,17 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding Name}" Margin="20" FontSize="41"  />
+                                    <TextBlock Text="{Binding Name}" Margin="20" FontSize="41" TextTrimming="WordEllipsis" />
                                 </Grid>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
-                    <TextBlock Text="View all boards" x:Name="AllBoards" FontSize="48" Margin="0,524,10,0" Foreground="White"></TextBlock>
+                    <TextBlock Text="View all boards" x:Name="AllBoards" FontSize="48" VerticalAlignment="Bottom" Margin="5, 10, 10, 10" Foreground="White" Tap="AllBoards_Tap"></TextBlock>
                 </Grid>
             </phone:PivotItem>
 
             <!--Pivot item two-->
-            <phone:PivotItem x:Name="Notifications" Header="My Notifications" Background="#FF324459" Margin="0,28,0,0">
+            <phone:PivotItem x:Name="Notifications" Header="Notifications" Background="#FF324459" Margin="0,28,0,0">
                 <Grid x:Name="Notification_Content" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5">
                     <phone:LongListSelector x:Name="notification_list"
                             DataContext="{StaticResource notificationView}"
@@ -67,15 +67,14 @@
                                     </Grid.ColumnDefinitions>
                                     <Image Margin="20 15 20 15" Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Source="/Scrumboard;component/Assets/Img/white_icon_clock.png"></Image>
                                     <TextBlock Text="{Binding Date}" Margin="20 20 52 15" HorizontalAlignment="Right"/>
-                                    <TextBlock Text="Type:" Margin="20 65 20 15" FontSize="24"/>
-                                    <TextBlock Text="{Binding Type}" Margin="80 65 20 15" FontSize="24"  />
-                                    <TextBlock Text="Created By:" Margin="20 100 20 15" FontSize="24"/>
-                                    <TextBlock Text="{Binding MemberCreator.username}" Margin="20 100 20 15" FontSize="24" />
+                                    <TextBlock Text="{Binding Type}" Margin="20 65 20 15" FontSize="24" Height="80" TextTrimming="WordEllipsis" TextWrapping="Wrap" />
+                                    <TextBlock Text="Created By:" Margin="20 160 20 15" FontSize="24"/>
+                                    <TextBlock Text="{Binding MemberCreator.Username}" Margin="130 160 20 15" FontSize="24" />
                                 </Grid>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
-                    <TextBlock Text="View all notifications" x:Name="AllNotifications" FontSize="48" Margin="0,524,10,0" Foreground="White"></TextBlock>
+                    <TextBlock Text="View all notifications" x:Name="AllNotifications" FontSize="48" VerticalAlignment="Bottom" Margin="5, 10, 10, 10" Foreground="White" Tap="AllNotifications_Tap"></TextBlock>
                 </Grid>
             </phone:PivotItem>
 
@@ -94,12 +93,12 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding Name}" Margin="20" FontSize="41"/>
+                                    <TextBlock Text="{Binding Name}" Margin="20" FontSize="36" TextTrimming="WordEllipsis"/>
                                 </Grid>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
-                    <TextBlock Text="View all cards" x:Name="AllCards" FontSize="48" Margin="0,524,10,0" Foreground="White"></TextBlock>
+                    <TextBlock Text="View all cards" x:Name="AllCards" FontSize="48" VerticalAlignment="Bottom" Margin="5, 10, 10, 10" Foreground="White" Tap="AllCards_Tap"></TextBlock>
                 </Grid>
             </phone:PivotItem>
         </phone:Pivot>

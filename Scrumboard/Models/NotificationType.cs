@@ -14,27 +14,16 @@ namespace Scrumboard.Models
     [DataContract]
     public class NotificationType : INotifyPropertyChanged
     {
-        private static EnumMapper mapper;
-
         [DataMember(Name = "id")]
-        public string ID {get; set;}
+        public string ID { get; set; }
 
         [DataMember(Name = "unread")]
-        public string Unread {get; set;}
+        public string Unread { get; set; }
 
         [DataMember(Name = "type")]
         public string RawType { get; set; }
 
-        public string _Type;
-
-        public string Type { 
-        get
-        {
-            mapper = mapper ?? new EnumMapper("NotificationMappings.map");
-            return EnumUtil.GetEnumDescription((NotificationEnum.Notifications)mapper.GetMappedValue(RawType));
-        }
-            set { _Type = value; }
-        }
+        public string Type { get; set; }
 
         [DataMember(Name = "date")]
         public DateTime Date { get; set; }
@@ -42,15 +31,13 @@ namespace Scrumboard.Models
         [DataMember(Name = "idMemberCreator")]
         public string IdMemberCreator { get; set; }
 
-        //"data": {
-        //    "board": {
-        //        "shortLink": "qO9Cj5rA",
-        //        "name": "Project 1",
-        //        "id": "5325fa0e3051920573824e7f"
-        //    }
-        //},
+        [DataMember(Name = "data")]
+        public DataType Data { get; set; }
 
-        [DataMember(Name="memberCreator")]
+        [DataMember(Name = "member")]
+        public MemberType Member { get; set; }
+
+        [DataMember(Name = "memberCreator")]
         public MemberType MemberCreator { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

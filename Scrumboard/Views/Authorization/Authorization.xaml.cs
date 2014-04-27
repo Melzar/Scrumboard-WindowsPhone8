@@ -16,9 +16,9 @@ namespace Scrumboard
         public Authorization()
         {
             InitializeComponent();
-            Authorize_Button.NavigateUri = new Uri("https://trello.com/1/authorize?key=cdbaafab040e4588feb88455f3a792f8&name=Scrumboard&expiration=never&response_type=token", UriKind.Absolute);
+            Authorize_Button.NavigateUri = new Uri("https://trello.com/1/authorize?key=cdbaafab040e4588feb88455f3a792f8&name=Scrumboard&expiration=never&response_type=token&scope=read,write", UriKind.Absolute);
             Authorize_Button.TargetName = "_blank";
-            Authorize_again_Button.NavigateUri = new Uri("https://trello.com/1/authorize?key=cdbaafab040e4588feb88455f3a792f8&name=Scrumboard&expiration=never&response_type=token", UriKind.Absolute);
+            Authorize_again_Button.NavigateUri = new Uri("https://trello.com/1/authorize?key=cdbaafab040e4588feb88455f3a792f8&name=Scrumboard&expiration=never&response_type=token&scope=read,write", UriKind.Absolute);
             Authorize_again_Button.TargetName = "_blank";
         }
 

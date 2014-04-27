@@ -14,7 +14,7 @@ using System.Runtime.Serialization.Json;
 
 namespace Scrumboard.ViewModels
 {
-    public class BoardViewModel : INotifyPropertyChanged  
+    public class BoardViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<BoardType> BoardCollections { get; set; }
 
@@ -26,20 +26,28 @@ namespace Scrumboard.ViewModels
             isLoading = false;
         }
 
+        public void LoadAllMyBoardsPage()
+        {
+            isLoading = true;
+            WebClient notificationclient = new WebClient();
+            notificationclient.OpenReadCompleted += RenderBoards;
+            notificationclient.OpenReadAsync(new Uri(String.Format(EnumUtil.GetEnumDescription(ConnectionEnum.GETConnections.MyBoards), IsolatedStorageSettings.ApplicationSettings["MyToken"], IsolatedStorageSettings.ApplicationSettings["Token"])));
+        }
+
         public void LoadMyBoardsPage()
         {
             isLoading = true;
             WebClient clientMyBoards = new WebClient();
-            clientMyBoards.OpenReadCompleted += new OpenReadCompletedEventHandler(RenderMyBoards);
-            clientMyBoards.OpenReadAsync(new Uri(string.Format(EnumUtil.GetEnumDescription(ConnectionEnum.GETConnections.MyBoards), IsolatedStorageSettings.ApplicationSettings["MyToken"], IsolatedStorageSettings.ApplicationSettings["Token"])));
-                    
+            clientMyBoards.OpenReadCompleted += new OpenReadCompletedEventHandler(RenderBoards);
+            clientMyBoards.OpenReadAsync(new Uri(string.Format(EnumUtil.GetEnumDescription(ConnectionEnum.GETConnections.MyBoardsWithLimit), IsolatedStorageSettings.ApplicationSettings["MyToken"], IsolatedStorageSettings.ApplicationSettings["Token"], 4)));
         }
 
-        private void RenderMyBoards(object sender, OpenReadCompletedEventArgs args)
+        private void RenderBoards(object sender, OpenReadCompletedEventArgs args)
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BoardType[]));
             BoardType[] boards = serializer.ReadObject(args.Result) as BoardType[];
-            boards.Take(4).ToList().ForEach(BoardCollections.Add);
+            BoardCollections.Clear();
+            boards.ToList().ForEach(BoardCollections.Add);
             isLoading = false;
         }
 

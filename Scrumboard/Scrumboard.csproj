@@ -98,13 +98,20 @@
     <Compile Include="Integration\Customization\Control\TileTextBlock.cs" />
     <Compile Include="Integration\Enums\NotificationEnum.cs" />
     <Compile Include="Integration\Mapper\EnumMapper.cs" />
+    <Compile Include="Integration\Mapper\NotificationMapper.cs" />
+    <Compile Include="Models\AttachmentType.cs" />
     <Compile Include="Models\BoardType.cs" />
     <Compile Include="Integration\Enums\ConnectionEnum.cs" />
     <Compile Include="Integration\Utils\EnumUtil.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Models\CardType.cs" />
+    <Compile Include="Models\CheckItemType.cs" />
+    <Compile Include="Models\ChecklistType.cs" />
+    <Compile Include="Models\DataType.cs" />
+    <Compile Include="Models\ListType.cs" />
     <Compile Include="Models\MemberType.cs" />
     <Compile Include="Models\NotificationType.cs" />
+    <Compile Include="Models\OrganizationType.cs" />
     <Compile Include="SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
@@ -117,6 +124,9 @@
     <Compile Include="ViewModels\BoardViewModel.cs" />
     <Compile Include="ViewModels\CardViewModel.cs" />
     <Compile Include="ViewModels\NotificationViewModel.cs" />
+    <Compile Include="Views\All\AllPages.xaml.cs">
+      <DependentUpon>AllPages.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Authorization\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
@@ -136,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="SplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\All\AllPages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,6 +247,9 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Coding4Fun.Toolkit.Controls">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Controls.2.0.7\lib\windowsphone8\Coding4Fun.Toolkit.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
