@@ -13,8 +13,8 @@ namespace Scrumboard.Models
     {
         [DataMember(Name="id")]
         public string ID { get; set; }
-        
-        [DataMember(Name="avatarHash")]
+
+        [DataMember(Name = "avatarHash")]
         public string AvatarHash { get; set; }
         
         [DataMember(Name="fullName")]
@@ -25,6 +25,10 @@ namespace Scrumboard.Models
 
         [DataMember(Name="username")]
         public string Username { get; set; }
+
+        public string AvatarURL { get; set; }
+
+        public string Visible { get; set; }
         
         public event PropertyChangedEventHandler PropertyChanged;
 

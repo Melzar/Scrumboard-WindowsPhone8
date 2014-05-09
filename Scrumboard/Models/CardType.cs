@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -25,8 +26,8 @@ namespace Scrumboard.Models
         [DataMember(Name = "desc")]
         public string Desc { get; set; }
 
-        [DataMember(Name = "descData")]
-        public string DescData { get; set; }
+        //[DataMember(Name = "descData")]
+        //public string DescData { get; set; }
 
         [DataMember(Name = "idBoard")]
         public string IdBoard { get; set; }
@@ -54,16 +55,22 @@ namespace Scrumboard.Models
         [DataMember(Name = "shortLink")]
         public string ShortLink { get; set; }
 
-        /// Badges contract
-        
+        [DataMember(Name = "badges")]
+        public BadgesType Badges { get; set; }
+
+        public string _Due { get { return Due != null ? Due.Value.ToShortDateString() : null; } }
+
         [DataMember(Name = "due")]
-        public string Due { get; set; }
+        public DateTime? Due { get; set; }
+
+        public string Due_Visibility { get { return Due != null ? "Visible" : "Collapsed"; } }
 
         // checklist contract
+        [DataMember(Name = "members")]
+        public MemberType[] Members { get; set; }
 
-        // members contract
-
-        // labels contract
+        [DataMember(Name = "labels")]
+        public LabelType[] Labels { get; set; }
 
         [DataMember(Name = "shortUrl")]
         public string ShortUrl { get; set; }
@@ -71,8 +78,15 @@ namespace Scrumboard.Models
         [DataMember(Name = "subscribed")]
         public bool Subscribed { get; set; }
 
+        public string Subscribed_Visibility { get { return Subscribed ? "Visible" : "Collapsed"; } }
+
+        public string Unsubscribed_Visibility { get { return Subscribed ? "Collapsed" : "Visible"; } }
+
         [DataMember(Name = "url")]
         public string URL { get; set; }
+
+        [DataMember(Name= "actions")]
+        public NotificationType[] Actions { get; set; }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

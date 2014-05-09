@@ -10,7 +10,7 @@
     <!--Application Resources-->
     <Application.Resources>
         <Style x:Key="TransitionPageStyle" TargetType="phone:PhoneApplicationPage">
-            <!--<Setter Property="toolkit:TransitionService.NavigationInTransition">
+            <Setter Property="toolkit:TransitionService.NavigationInTransition">
                 <Setter.Value>
                     <toolkit:NavigationInTransition>
                         <toolkit:NavigationInTransition.Backward>
@@ -21,8 +21,8 @@
                         </toolkit:NavigationInTransition.Forward>
                     </toolkit:NavigationInTransition>
                 </Setter.Value>
-            </Setter>-->
-            <!--<Setter Property="toolkit:TransitionService.NavigationOutTransition">
+            </Setter>
+            <Setter Property="toolkit:TransitionService.NavigationOutTransition">
                 <Setter.Value>
                     <toolkit:NavigationOutTransition>
                         <toolkit:NavigationOutTransition.Backward>
@@ -33,7 +33,7 @@
                         </toolkit:NavigationOutTransition.Forward>
                     </toolkit:NavigationOutTransition>
                 </Setter.Value>
-            </Setter>-->
+            </Setter>
         </Style>
         <Style x:Key="PivotHeaderItemStyle" TargetType="Primitives:PivotHeaderItem">
             <Setter Property="Background" Value="Transparent"/>
@@ -42,7 +42,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Primitives:PivotHeaderItem">
-                        <Grid Background="#FF324459">
+                        <Grid Background="#FF3C94A2">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="SelectionStates">
                                     <VisualState x:Name="Unselected"/>

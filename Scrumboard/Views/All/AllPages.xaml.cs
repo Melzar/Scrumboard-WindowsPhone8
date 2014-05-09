@@ -12,6 +12,9 @@ using Coding4Fun.Toolkit.Controls;
 using Scrumboard.Integration.Utils;
 using Scrumboard.Integration.Enums;
 using System.IO.IsolatedStorage;
+using System.Windows.Data;
+using Scrumboard.Models;
+using Newtonsoft.Json;
 
 namespace Scrumboard.Views.All
 {
@@ -28,8 +31,8 @@ namespace Scrumboard.Views.All
             boardView = (BoardViewModel)Resources["boardView"];
             cardView = (CardViewModel)Resources["cardView"];
             notificationView = (NotificationViewModel)Resources["notificationView"];
+            SetBindings();
         }
-
 
         private void AllPivot_Loaded(object sender, RoutedEventArgs e)
         {
@@ -58,23 +61,42 @@ namespace Scrumboard.Views.All
         {
             PhoneApplicationService.Current.State["Sender"] = sender;
             if (e.PopUpResult == PopUpResult.Ok)
-                AddNewBoardPage();
-        }
-     
-        public void AddNewBoardPage()
-        {
-            InputPrompt popup = PhoneApplicationService.Current.State["Sender"] as InputPrompt;
-            WebClient client = new WebClient();
-            client.UploadStringCompleted += UploadCompleted;
-            client.UploadStringAsync(new Uri(string.Format(EnumUtil.GetEnumDescription(ConnectionEnum.POSTConnections.AddBoard),IsolatedStorageSettings.ApplicationSettings["MyToken"],IsolatedStorageSettings.ApplicationSettings["Token"],popup.Value)),"POST");
+                boardView.AddNewBoardPage();
         }
 
-        public void UploadCompleted(object sender , UploadStringCompletedEventArgs e)
+        private void SetBindings()
         {
-            InputPrompt popup = PhoneApplicationService.Current.State["Sender"] as InputPrompt;
-            //popup.
+            Binding boardsbinding = new Binding("IsLoading") { Source = boardView };
+            BindingOperations.SetBinding(
+                LoadingBoards, ProgressBar.IsIndeterminateProperty, boardsbinding);
+
+            Binding vboardsbinding = new Binding("Visible") { Source = boardView };
+            BindingOperations.SetBinding(
+                LoadingBoards, ProgressBar.VisibilityProperty, vboardsbinding);
+
+            Binding notificationsbinding = new Binding("IsLoading") { Source = notificationView };
+            BindingOperations.SetBinding(
+                LoadingNotifications, ProgressBar.IsIndeterminateProperty, notificationsbinding);
+
+            Binding vnotificationsbinding = new Binding("Visible") { Source = notificationView };
+            BindingOperations.SetBinding(
+                LoadingNotifications, ProgressBar.VisibilityProperty, vnotificationsbinding);
+
+            Binding cardsbinding = new Binding("IsLoading") { Source = cardView };
+            BindingOperations.SetBinding(
+                LoadingCards, ProgressBar.IsIndeterminateProperty, cardsbinding);
+
+            Binding vcardsbinding = new Binding("Visible") { Source = cardView };
+            BindingOperations.SetBinding(
+                LoadingCards, ProgressBar.VisibilityProperty, vcardsbinding);
         }
 
+        private void board_grid_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            Grid source = sender as Grid;
+            PhoneApplicationService.Current.State["CurrentBoard"] = boardView.BoardCollections.Where(x => x.ID == (string) source.Tag).FirstOrDefault();
+            NavigationService.Navigate(new Uri("/Views/Specific/BoardPage.xaml", UriKind.Relative));
+        }
 
     }
 }

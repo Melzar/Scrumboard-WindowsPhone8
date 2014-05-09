@@ -116,7 +116,7 @@ namespace Scrumboard
             // Create the frame but don't set it as RootVisual yet; this allows the splash
             // screen to remain active until the application is ready to render.
             RootFrame = new TransitionFrame();
-            RootFrame.Background = new SolidColorBrush(Color.FromArgb(255,50,68,89));
+            RootFrame.Background = new SolidColorBrush(Color.FromArgb(255,60,148,162));
             RootFrame.Navigated += CompleteInitializePhoneApplication;
 
             // Handle navigation failures

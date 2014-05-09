@@ -45,5 +45,8 @@ namespace Scrumboard.Models
 
         [DataMember(Name = "organization")]
         public OrganizationType Organization { get; set; }
+
+        [DataMember(Name = "text")]
+        public string Text { get; set; }
     }
 }

@@ -22,32 +22,32 @@ namespace Scrumboard.Integration.Mapper
                     notification.Type = "";
                     ; break;
                 case NotificationEnum.Notifications.copyBoard:
-                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username, notification.Data.BoardSource.Name, notification.Data.Board.Name);
+                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username.ToUpper(), notification.Data.BoardSource.Name.ToUpper(), notification.Data.Board.Name.ToUpper());
                     ; break;
                 case NotificationEnum.Notifications.commentCard:
                 case NotificationEnum.Notifications.copyCommentCard:
                 case NotificationEnum.Notifications.createCard:
-                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username, notification.Data.Card.Name);
+                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username.ToUpper(), notification.Data.Card.Name.ToUpper());
                     ; break;
                 case NotificationEnum.Notifications.convertToCardFromCheckItem:
                 case NotificationEnum.Notifications.copyCard:
-                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username, notification.Data.CardSource.Name, notification.Data.Card.Name);
+                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username.ToUpper(), notification.Data.CardSource.Name.ToUpper(), notification.Data.Card.Name.ToUpper());
                     ; break;
                 case NotificationEnum.Notifications.addAttachmentToCard:
                 case NotificationEnum.Notifications.deleteAttachmentFromCard:
-                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username, notification.Data.Attachment.Name, notification.Data.Card.Name);
+                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username.ToUpper(), notification.Data.Attachment.Name.ToUpper(), notification.Data.Card.Name.ToUpper());
                     ; break;
                 case NotificationEnum.Notifications.createBoard:
                 case NotificationEnum.Notifications.deleteBoardInvitation:
-                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username, notification.Data.Board.Name);
+                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username.ToUpper(), notification.Data.Board.Name.ToUpper());
                     ; break;
                 case NotificationEnum.Notifications.createList:
                 case NotificationEnum.Notifications.deleteCard:
-                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username, notification.Data.List.Name, notification.Data.Board.Name);
+                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username.ToUpper(), notification.Data.List.Name.ToUpper(), notification.Data.Board.Name.ToUpper());
                     ; break;
                 case NotificationEnum.Notifications.deleteOrganizationInvitation:
                 case NotificationEnum.Notifications.createOrganization:
-                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username, notification.Data.Organization.Name);
+                    notification.Type = string.Format(EnumUtil.GetEnumDescription(notificationtype), notification.MemberCreator.Username.ToUpper(), notification.Data.Organization.Name.ToUpper());
                     ; break;
                 case NotificationEnum.Notifications.disablePowerUp:
                     notification.Type = "";

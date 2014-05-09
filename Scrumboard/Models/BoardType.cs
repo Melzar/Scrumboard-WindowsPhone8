@@ -45,7 +45,11 @@ namespace Scrumboard.Models
 
         //invitations contract
 
-        //memberships contract
+        [DataMember(Name="memberships")]
+        public MembershipType[] Memberships { get; set; }
+
+        [DataMember(Name="members")]
+        public MemberType[] Members { get; set; }
 
         [DataMember(Name="shortLink")]
         public string ShortLink { get; set; }
@@ -56,6 +60,9 @@ namespace Scrumboard.Models
         //label contract
 
         //powerUp cotract
+        
+        [DataMember(Name="lists")]
+        public ListType[] Lists { get; set; }
 
         [DataMember(Name="dateLastActivity")]
         public string DateLastActivity { get; set; }

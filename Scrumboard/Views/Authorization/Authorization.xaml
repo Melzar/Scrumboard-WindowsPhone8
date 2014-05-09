@@ -15,20 +15,20 @@
     shell:SystemTray.IsVisible="True" Style="{StaticResource TransitionPageStyle}">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" toolkit:SlideInEffect.LineIndex="1" Background="#FF324459">
+    <Grid x:Name="LayoutRoot" toolkit:SlideInEffect.LineIndex="1" Background="#FF3C94A2">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="0,0,0,623" Grid.RowSpan="2" Background="#FF324459">
+        <StackPanel Grid.Row="0" Margin="0,0,0,623" Grid.RowSpan="2" Background="#FF3C94A2">
             <TextBlock x:Name="Application_Title" Text="Scrumboard" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="21.333" Margin="12,17,10,0"/>
             <TextBlock x:Name="Page_Title" Text="Authorization" Margin="12,0,10,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Background="#FF324459" Margin="0,150,0,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Background="#FF3C94A2" Margin="0,150,0,0">
         	<TextBlock TextAlignment="Center" x:Name="Authorize_Message" HorizontalAlignment="Left" Margin="10,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="460" Height="272" FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="21.333">
         		<Run Text="Before you can use scrumboard application you have to follow procedure below:"/>
         		<LineBreak/>

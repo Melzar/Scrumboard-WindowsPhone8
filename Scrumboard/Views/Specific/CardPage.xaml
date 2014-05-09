@@ -1,0 +1,184 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Scrumboard.Views.Specific.CardPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Scrumboard.ViewModels"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" Style="{StaticResource TransitionPageStyle}">
+
+    <phone:PhoneApplicationPage.Resources>
+        <vm:CardViewModel x:Key="cardView"/>
+        <vm:BoardViewModel x:Key="boardView"/>
+        <vm:ListViewModel x:Key="listView"/>
+
+
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <!--Pivot Control-->
+        <phone:Pivot  x:Name="CardPivot" Title="Scrumboard : Card : " FontFamily="/Scrumboard;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="21.333" Margin="0" Background="#FF3C94A2">
+            <!--Pivot item two-->
+            <phone:PivotItem x:Name="Details" Header="Card Details" Background="#FF3C94A2" Margin="0" DataContext="{StaticResource cardView}">
+                <Grid x:Name="Details_Content" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5">
+                    <Image x:Name="Due_Img" Margin="0,10,10,25" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Source="/Scrumboard;component/Assets/Img/white_icon_clock.png" Visibility="{Binding SelectedCard.Due_Visibility}"></Image>
+                    <TextBlock x:Name="DueDate" Margin="20 20 72 25" HorizontalAlignment="Right" Text="{Binding SelectedCard.Due}" FontSize="22"/>
+                    <ProgressBar x:Name="LoadingDetails" IsIndeterminate="{Binding IsLoading}" Foreground="White" Visibility="{Binding Visible}"></ProgressBar>
+                    <phone:LongListSelector x:Name="badges_list"
+                            LayoutMode="Grid" GridCellSize="150,75" 
+                            DataContext="{StaticResource cardView}"
+                                            ItemsSource="{Binding CardLabelCollection}"
+                                            ListFooter="{Binding}" Margin="0,65,10,418">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#FFFFFF" BorderThickness="3" Margin="10,0,0,10">
+                                    <Grid Background="{Binding Color}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="200"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Name}" Margin="20 20 52 15" Width="150" VerticalAlignment="Top"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                    <TextBlock x:Name="Card_Description" Margin="10,221,10,117" Text="{Binding SelectedCard.Desc}"></TextBlock>
+                    <Button x:Name="Edit_Description" Margin="245,517,10,39" Content="Edit description" Tap="Edit_Description_Tap"></Button>
+                </Grid>
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem x:Name="Members" Header="Card Members" Margin="0,28,0,0" Background="#FF3C94A2">
+                <Grid x:Name="Boards_Content" Margin="10,10,0,0">
+                    <Button  VerticalAlignment="Top" HorizontalAlignment="Right" Content="Add member"  Margin="0,62,0,0" Tap="Button_Tap" />
+                    <toolkit:AutoCompleteBox VerticalContentAlignment="Bottom" FilterMode="None"                                  
+                               x:Name="MemberAutocomplete" VerticalAlignment="Top" DataContext="{StaticResource cardView}" ValueMemberBinding="{Binding Username}"
+                               ItemsSource="{Binding CardSearchMemberCollection }" Width="Auto"  MinimumPrefixLength="2" MinimumPopulateDelay="500" >
+                        <toolkit:AutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Username}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </toolkit:AutoCompleteBox.ItemTemplate>
+                    </toolkit:AutoCompleteBox>
+                    <ProgressBar x:Name="LoadingMembers" IsIndeterminate="{Binding IsLoading}" Foreground="White" Visibility="{Binding Visible}" Margin="0,-36,0,601"></ProgressBar>
+                    <phone:LongListSelector x:Name="member_list"
+                    LayoutMode="Grid" GridCellSize="150,150" 
+            		DataContext="{StaticResource cardView}"             
+            		ItemsSource="{Binding CardMemberCollection}"                               
+            		ListFooter="{Binding}" Margin="0,134,10,0">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#FFFFFF" BorderThickness="3" Margin="10,10,0,0">
+                                    <Grid Background="#FF5CA9B6">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="140"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Height="140" Width="140" Stretch="UniformToFill" Source="{Binding AvatarURL}"/>
+                                        <TextBlock Text="{Binding FullName}" Margin="20" FontSize="28" VerticalAlignment="Center" TextTrimming="WordEllipsis" Visibility="{Binding Visible}" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </Grid>
+            </phone:PivotItem>
+
+            <!--Pivot item three-->
+            <phone:PivotItem x:Name="Comments" Header="Card comments" Background="#FF3C94A2" Margin="0,28,0,0">
+                <Grid x:Name="Comment_Content" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5">
+                    <Button x:Name="Add_Comment"  VerticalAlignment="Top" HorizontalAlignment="Right" Content="Add Comment"  Margin="0,0,10,0" Tap="Add_Comment_Tap" />
+                    <ProgressBar x:Name="LoadingComments" IsIndeterminate="{Binding IsLoading}" Visibility="{Binding Visible}" Foreground="White" Margin="-10,-38,10,611"></ProgressBar>
+                    <phone:LongListSelector x:Name="list_list" DataContext="{StaticResource cardView }" 
+                            ItemsSource="{Binding CardCommentCollection}"
+                            ListFooter="{Binding}" Margin="0,82,10,0">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#FFFFFF" BorderThickness="3" Margin="0,0,0,10">
+                                    <Grid Background="#FF5CA9B6" Tag="{Binding ID}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="200"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Data.Text}" Margin="20, 40, 20, 20" Height="100" FontSize="26" TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                                        <Image Margin="20 15 20 10" Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Source="/Scrumboard;component/Assets/Img/white_icon_clock.png"></Image>
+                                        <TextBlock Text="{Binding Date}" Margin="20 20 52 15" HorizontalAlignment="Right"/>
+                                        <TextBlock Text="Created By:" Margin="20 160 20 15" FontSize="24"/>
+                                        <TextBlock Text="{Binding MemberCreator.Username}" Margin="130 160 20 15" FontSize="24" />
+                                        <Image Margin="20 15 10 10" Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Source="/Scrumboard;component/Assets/Img/icon_comments-o.png" RenderTransformOrigin="0.5,0.5" Opacity="0.05"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </Grid>
+            </phone:PivotItem>
+
+            <!--Pivot item four-->
+            <phone:PivotItem x:Name="Actions" Header="Card Actions" Background="#FF3C94A2" Margin="0,28,0,0">
+                <Grid x:Name="Actions_Content" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5">
+                    <ProgressBar x:Name="LoadingActions" IsIndeterminate="{Binding IsLoading}" Visibility="{Binding Visible}" Foreground="White" Margin="-10,-38,10,611"></ProgressBar>
+
+                    <TextBlock Text="Set due date" Margin="0,0,10,569"></TextBlock>
+
+                    <Button x:Name="Date_save" Content="Save" Height="72" Margin="300,32,0,502"/>
+                    <toolkit:DatePicker x:Name="datePicker" Margin="-10,32,158,500" Value="2/5/2014"/>
+
+
+                    <TextBlock Text="Add label" Margin="0,109,10,460"></TextBlock>
+
+                    <TextBox x:Name="Label_Input" Margin="-10,141,297,394"></TextBox>
+                    <TextBlock Text="Move to board" Margin="0,217,10,352"></TextBlock>
+                    <Button x:Name="Move_board" Content="Save" Height="76" Margin="300,250,0,280"></Button>
+                    <toolkit:ListPicker Name="board_picker"
+                                   DataContext="{StaticResource boardView}"
+                                   ItemsSource="{Binding BoardCollections}" Margin="0,254,170,286">
+                        <toolkit:ListPicker.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" Margin="12 0 0 0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </toolkit:ListPicker.ItemTemplate>
+                    </toolkit:ListPicker>
+                    <TextBlock Text="Move to list" Margin="0,331,10,238"></TextBlock>
+                    <Button x:Name="Move_list" Content="Save" Height="76" Margin="300,364,0,166"></Button>
+                    <toolkit:ListPicker Name="list_picker"
+                                   DataContext="{StaticResource listView}"
+                                   ItemsSource="{Binding ListCollections}" Margin="0,368,170,172">
+                        <toolkit:ListPicker.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" Margin="12 0 0 0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </toolkit:ListPicker.ItemTemplate>
+                    </toolkit:ListPicker>
+                    <Button x:Name="Delete_button" Content="Delete" Height="76" Margin="-10,520,310,10"/>
+                    <Button x:Name="Archive_button" Content="Archive" Height="76" Margin="149,520,158,10"/>
+                    <Button x:Name="Subscribe_button" Content="Subscribe" Height="76" Margin="300,520,0,10"/>
+
+                </Grid>
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
+
+</phone:PhoneApplicationPage>
